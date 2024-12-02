@@ -3,14 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.keycloak</groupId>
-    <artifactId>keycloak-group-conditional-authentication-provider</artifactId>
+    <artifactId>keycloak-user-group-conditional-authentication-provider</artifactId>
     <version>24.0.0</version>
     <packaging>jar</packaging>
     <name>KeyCloak: user in group conditional authentication Provider</name>
     <description>KeyCloak: user in group conditional authentication Provider</description>
 
     <scm>
-        <url>https://github.com/lorenzrox/keycloak-group-conditional-authentication-provider</url>
+        <url>https://github.com/lorenzrox/keycloak-user-group-conditional-authentication-provider</url>
     </scm>
 
     <properties>
