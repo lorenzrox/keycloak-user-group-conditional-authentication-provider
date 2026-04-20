@@ -19,18 +19,18 @@ public class ConditionalUserGroupAuthenticator implements ConditionalAuthenticat
     @Override
     public boolean matchCondition(AuthenticationFlowContext context) {
         Map<String, String> config = context.getAuthenticatorConfig().getConfig();
-        boolean negateOutput = Boolean.parseBoolean(config.get(ConditionalUserAttributeValueFactory.CONF_NOT));
+        boolean negate = Boolean.parseBoolean(config.get(ConditionalUserGroupAuthenticatorFactory.NEGATE));
         String groupName = config.get(ConditionalUserGroupAuthenticatorFactory.GROUP_NAME);
 
         UserModel user = context.getUser();
         if (user == null) {
             throw new AuthenticationFlowException(
                     "Cannot find user for obtaining particular user groups. Authenticator: "
-                            + ConditionalUserAttributeValueFactory.PROVIDER_ID,
+                            + ConditionalUserGroupAuthenticatorFactory.PROVIDER_ID,
                     AuthenticationFlowError.UNKNOWN_USER);
         }
 
-        return user.getGroupsStream().anyMatch(group -> Objects.equals(group.getName(), groupName)) != negateOutput;
+        return user.getGroupsStream().anyMatch(group -> Objects.equals(group.getName(), groupName)) != negate;
     }
 
     @Override
